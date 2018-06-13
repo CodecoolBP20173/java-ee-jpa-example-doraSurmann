@@ -2,10 +2,7 @@ package com.codecool.jpaexample.model;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Student {
@@ -28,21 +25,30 @@ public class Student {
     @OneToOne
     private Address address;
 
+    @Column(name = "phone number")
+    private List<String> phoneNumbers = new ArrayList<>();
+
     public Student() {
     }
 
-    public Student(String name, String email, Date dateOfBirth) {
+    public Student(String name, String email, Date dateOfBirth, Address address) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.age = (Calendar.getInstance().getTimeInMillis() - dateOfBirth.getTime())
                 / (60L * 60L * 1000L * 24L * 365L);
-    }
-
-    public Student(String name, String email, Date dateOfBirth, Address address) {
-        this(name, email, dateOfBirth);
         this.address = address;
     }
+
+    public Student(String name, String email, Date dateOfBirth, Address address, List<String> phoneNumbers) {
+        this(name, email, dateOfBirth, address);
+        Collections.copy(this.phoneNumbers, phoneNumbers);
+
+        }
+
+    public List<String> getPhoneNumbers(){
+        return Collections.unmodifiableList(phoneNumbers);
+        }
 
     public long getId() {
         return id;
