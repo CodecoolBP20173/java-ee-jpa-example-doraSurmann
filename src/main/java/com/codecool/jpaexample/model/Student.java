@@ -25,7 +25,8 @@ public class Student {
     @OneToOne
     private Address address;
 
-    @Column(name = "phone number")
+    @ElementCollection
+    @CollectionTable(name = "Phone")
     private List<String> phoneNumbers = new ArrayList<>();
 
     public Student() {
@@ -45,6 +46,15 @@ public class Student {
         Collections.copy(this.phoneNumbers, phoneNumbers);
 
         }
+
+    public Student(String name, String email, Date dateOfBirth, long age, Address address, List<String> phoneNumbers) {
+        this.name = name;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.age = age;
+        this.address = address;
+        this.phoneNumbers = phoneNumbers;
+    }
 
     public List<String> getPhoneNumbers(){
         return Collections.unmodifiableList(phoneNumbers);
