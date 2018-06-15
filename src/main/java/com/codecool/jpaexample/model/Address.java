@@ -14,6 +14,10 @@ public class Address {
     private String city;
     private String addr;
 
+    @OneToOne(mappedBy = "address")
+    private Student student;
+
+
     public Address() {
     }
 
@@ -64,6 +68,10 @@ public class Address {
         this.addr = addr;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
@@ -72,6 +80,7 @@ public class Address {
                 ", zipcode='" + zipcode + '\'' +
                 ", city='" + city + '\'' +
                 ", addr='" + addr + '\'' +
+                ", student=" + student +
                 '}';
     }
 
