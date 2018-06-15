@@ -27,6 +27,7 @@ public class Student {
 
     @ElementCollection
     @CollectionTable(name = "Phone")
+    @Column(name = "phone")
     private List<String> phoneNumbers = new ArrayList<>();
 
     public Student() {
@@ -56,9 +57,6 @@ public class Student {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public List<String> getPhoneNumbers(){
-        return Collections.unmodifiableList(phoneNumbers);
-        }
 
     public long getId() {
         return id;
@@ -104,13 +102,20 @@ public class Student {
         this.address = address;
     }
 
+    public List<String> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
                 ", age=" + age +
-                ", address id=" + address.getId() +
+                ", address=" + address +
+                ", phoneNumbers=" + phoneNumbers +
                 '}';
     }
 
