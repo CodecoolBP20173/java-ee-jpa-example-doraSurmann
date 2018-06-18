@@ -24,7 +24,7 @@ public class JPAExample {
             e.printStackTrace();
         }
 
-        Klass classBp2 = new Klass("Budapest 2016-2");
+        Klass classBp2 = new Klass("Budapest 2016-2", CCLocation.BUDAPEST);
         Address address = new Address("Hungary", "1234", "Budapest", "Macskakő út 5.");
         Student student = new Student("Ödön", "odon@tokodon.hu", birthDate1, address);
         classBp2.addStudent(student);
@@ -77,3 +77,8 @@ public class JPAExample {
 
     }
 }
+
+/*Use the @Column annotation to modify the default O-R mapping! Change the column name
+for attribute zipcode to Zip, limit its length to 4, and set the email field
+to UNIQUE and NOT NULL!
+ */

@@ -11,6 +11,9 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @ManyToOne
+    private Klass klass;
+
     private String name;
 
     @Column(unique = true, nullable = false)
@@ -104,6 +107,14 @@ public class Student {
 
     public List<String> getPhoneNumbers() {
         return phoneNumbers;
+    }
+
+    public Klass getKlass() {
+        return klass;
+    }
+
+    public void setKlass(Klass klass) {
+        this.klass = klass;
     }
 
     @Override

@@ -8,10 +8,11 @@ import java.util.Set;
 
 
 @Entity
+@Table(name="Class")
 public class Klass {
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "klass")
     private Set<Student> students = new HashSet<>();
 
     public Klass() {}
